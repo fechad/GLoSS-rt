@@ -139,3 +139,6 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+
+#pypi files
+.pypirc
