@@ -120,18 +120,49 @@ class CMakeBuild(build_ext):
             ["cmake", "--build", ".", *build_args], cwd=build_temp, check=True
         )
 
+# Read README for long description
+def read_readme():
+    with open("README.md", "r", encoding="utf-8") as f:
+        return f.read()
+
 # The information here can also be placed in setup.cfg - better separation of
 # logic and declaration, and simpler if you include description/version in a file.
 setup(
-    name="gloss",
-    version="0.0.1",
+    name="glossrt",
+    version="0.0.2",
     author="Fedwin Chatelier",
     author_email="developer.fedwinc@gmail.com",
     description="A geospatial line of sight evaluation system to be use for antenas LoS evaluations in small to large scale network simulations.",
-    long_description="",
+    long_description=read_readme(),
+    long_description_content_type="text/markdown",
+    url="https://github.com/yourusername/GLoSS",  # Update with your actual repo
+    project_urls={
+        "Bug Tracker": "https://github.com/yourusername/GLoSS/issues",  # Update with your actual repo
+        "Source Code": "https://github.com/yourusername/GLoSS",  # Update with your actual repo
+    },
+    classifiers=[
+        "Development Status :: 3 - Alpha",
+        "Intended Audience :: Developers",
+        "Intended Audience :: Science/Research",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: C++",
+        "Topic :: Scientific/Engineering",
+        "Topic :: Software Development :: Libraries :: Python Modules",
+    ],
+    license="MIT",  # Add license here instead of in classifiers
+    keywords="geospatial line-of-sight antenna network simulation pybind11",
     ext_modules=[CMakeExtension("gloss")],
     cmdclass={"build_ext": CMakeBuild},
     zip_safe=False,
-    extras_require={"test": ["pytest>=6.0"]},
+    extras_require={
+        "test": ["pytest>=6.0"],
+        "dev": ["pytest>=6.0", "build", "twine"],
+    },
     python_requires=">=3.7",
 )
