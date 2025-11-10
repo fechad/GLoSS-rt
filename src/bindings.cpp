@@ -4,8 +4,10 @@
  */
 
 #include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
 
 #include "utils.hpp"
+#include "gloss.cpp"
 
 #include <iostream>
 
@@ -37,6 +39,9 @@ PYBIND11_MODULE(gloss, m) {
 
            printHelloWorld
            getVersion
+           initialize
+           compute
+           saveResults
     )pbdoc";
 
     m.def("printHelloWorld", &printHelloWorld, R"pbdoc(
@@ -45,6 +50,19 @@ PYBIND11_MODULE(gloss, m) {
 
       m.def("getVersion", &gloss::getVersion, R"pbdoc(
         Returns the current version of gloss.
+    )pbdoc");
+
+    m.def("initialize", &gloss::initialize, R"pbdoc(
+        Initializes the GLoSS module with antenna file, tiff file, and ground tiff file.
+    )pbdoc",
+        py::arg("antenna_file"), py::arg("tiff_file"), py::arg("ground_tiff_file"));
+    
+    m.def("compute", &gloss::compute, R"pbdoc(
+        Computes the LoS paths for the initialized antennas.
+    )pbdoc");
+
+    m.def("saveResults", &gloss::saveResults, R"pbdoc(
+        Saves the computed LoS paths to JSON files.
     )pbdoc");
 
 #ifdef VERSION_INFO

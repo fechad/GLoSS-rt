@@ -8,8 +8,8 @@ print(f"Current version is: {version}")
 
 # Initialize
 antenna_file = "antenna_topology/videotron.csv"
-data_path = "data/sample_data.tiff"
-data_mnt_path = "data/sample_data_MNT.tiff"
+data_path = "data/montreal/montreal.tif"
+data_mnt_path = "data/montreal/montreal_MNT.tif"
 
 m.initialize(antenna_file, data_path, data_mnt_path)
 print("Initialization complete")

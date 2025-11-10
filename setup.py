@@ -129,7 +129,7 @@ def read_readme():
 # logic and declaration, and simpler if you include description/version in a file.
 setup(
     name="glossrt",
-    version="0.0.2",
+    version="0.1.2",
     author="Fedwin Chatelier",
     author_email="developer.fedwinc@gmail.com",
     description="A geospatial line of sight evaluation system to be use for antenas LoS evaluations in small to large scale network simulations.",

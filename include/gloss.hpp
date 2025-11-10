@@ -2,6 +2,16 @@
 #define GLOSS_HPP
 
 #include <string>
+#include <map>
+#include <vector>
+#include <utility>
+
+using Coordinate = std::pair<double, double>;
+using Elevation = float;
+using CoordinateElevationPair = std::pair<Coordinate, Elevation>;
+using Grid = std::vector<std::vector<CoordinateElevationPair>>;
+using AntennaDict = std::map<int, Grid>;
+
 
 namespace gloss {
 
@@ -19,6 +29,10 @@ namespace gloss {
                     std::to_string(PATCH);
         }
     };
+
+    void initialize(const std::string& antennaFile, const std::string& tiffFile, const std::string& groundTiffFile);
+    AntennaDict compute();
+    void saveResults(const AntennaDict& antennaDict);
 } // namespace gloss
 
 #endif // GLOSS_HPP
