@@ -142,3 +142,10 @@ venv.bak/
 
 #pypi files
 .pypirc
+
+# data files
+data/
+*.tiff
+*.tif
+
+los_datasets/
