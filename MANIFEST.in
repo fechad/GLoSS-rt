@@ -1,0 +1,10 @@
+include CMakeLists.txt
+include README.md
+include LICENSE
+include requirements_linux.txt
+include pyproject.toml
+recursive-include src *
+recursive-include include *
+recursive-include pybind11 *
+global-include *.cmake
+global-include CMakeLists.txt
